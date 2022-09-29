@@ -1,0 +1,4 @@
+<h1>Showing all events this user has created.</h1>
+<% @user.events.each do | event | %>
+  <p>Name: <%= event.name %> </p>
+<% end %>
