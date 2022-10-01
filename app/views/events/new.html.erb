@@ -1,0 +1,16 @@
+<%= form_for Event.new , date: { turbo: false } do |form| %>
+  <%= form.label "Name" %>
+	<%= form.text_field :name %>
+
+	<%= form.label "Location" %>
+	<%= form.text_field :location %>
+
+	<%= form.label "Date" %>
+	<%= form.datetime_select :date%>
+
+	<% if user_signed_in? %>
+		<%= form.submit "Create" %>
+	<% else %>
+		<%= form.submit "Sign in to create" %>
+	<% end %>
+<% end %>
