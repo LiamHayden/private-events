@@ -4,3 +4,8 @@
 
 <%# fix below %>
 <%= link_to 'RSVP', rsvp_event_path %> 
+
+<h2>Attendees</h2>
+<% @event.attendees.each do |attendee| %>
+  <p>User: <%= attendee.name %> </p>
+<% end %>
