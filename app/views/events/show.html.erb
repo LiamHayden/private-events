@@ -1,3 +1,6 @@
 <h1>Name: <%= @event.name %> </h1>
 <p>Location: <%= @event.location %></p>
 <p>Date: <%= @event.date %> </p>
+
+<%# fix below %>
+<%= link_to 'RSVP', rsvp_event_path %> 
