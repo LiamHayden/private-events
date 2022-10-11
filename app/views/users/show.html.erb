@@ -5,7 +5,14 @@
   <p>Name: <%= event.name %> </p>
 <% end %>
 
-<h2>Event Attending</h2>
+<h2>Events Attending</h2>
 <% @user.attended_events.each do |event| %>
   <p>Event: <%= link_to event.name, event_path(event) %> </p>
 <% end %>
+
+<p>Past Events</p>
+<ul>
+  <% @user.attended_events.where("date < ?", Date.today).each do |event| %>
+    <li><%= event.name %> </li>
+  <% end %>
+</ul>
