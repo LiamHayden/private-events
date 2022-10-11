@@ -5,6 +5,12 @@
 			<%= link_to "Home", root_path %>
 		</li>
 		<li>
+			<%= link_to "Profile", user_path(current_user) %>
+		</li>
+		<li>
+			<%= link_to "Create Event", "events/new" %>
+		</li>
+		<li>
 			<% if user_signed_in? %>
 				<%= button_to "Sign out", destroy_user_session_path, method: :detete %>
 			<% else %>
