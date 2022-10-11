@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Private Events</h1>
+	<ul>
+		<li>
+			<%= link_to "Home", root_path %>
+		</li>
+		<li>
+			<% if user_signed_in? %>
+				<%= button_to "Sign out", destroy_user_session_path, method: :detete %>
+			<% else %>
+				<%= link_to "Sign in", "/users/sign_in" %>
+			<% end %>
+		</li>
+	</ul>
+</div>
