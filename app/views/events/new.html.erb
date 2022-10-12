@@ -1,10 +1,6 @@
-<<<<<<< Updated upstream
 <%= render "navbar" %>
 
 <%= form_for Event.new , date: { turbo: false } do |form| %>
-=======
-<%= form_with model: @event do |form| %>
->>>>>>> Stashed changes
   <%= form.label "Name" %>
 	<%= form.text_field :name %>
 
