@@ -4,10 +4,13 @@
 <p>Location: <%= @event.location %></p>
 <p>Date: <%= @event.date %> </p>
 
-<%# fix below %>
 <%= link_to 'RSVP', rsvp_event_path %> 
 
 <h2>Attendees</h2>
-<% @event.attendees.each do |attendee| %>
-  <p>User: <%= attendee.name %> </p>
+<% if @event.attendees.empty? %>
+  <p>No attendees, yet.</p>
+<% else %>
+  <% @event.attendees.each do |attendee| %>
+    <p>User: <%= attendee.name %> </p>
+  <% end %>
 <% end %>
