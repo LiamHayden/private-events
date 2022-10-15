@@ -2,14 +2,14 @@
 
 <div>
   <h1>Past Events</h1>
-  <% Event.past.each do |event| %>
-    <p> <%= link_to event.name, event_path(event) %> </p>
+  <% Event.past_event.each do |event| %>
+    <p>Name: <%= link_to event.name, event_path(event) %> </p>
   <% end %>
 </div>
 
 <div>
   <h1>Upcoming Events</h1>
-  <% Event.upcoming.each do |event| %>
-    <p> <%= link_to event.name, event_path(event) %> </p>
+  <% Event.upcoming_event.each do |event| %>
+    <p>Name: <%= link_to event.name, event_path(event) %> </p>
   <% end %>
 </div>
