@@ -8,5 +8,4 @@ Rails.application.routes.draw do
       get 'rsvp'
     end
   end
-  get 'users/events/new'
 end
