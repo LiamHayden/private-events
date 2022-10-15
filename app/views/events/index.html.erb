@@ -1,11 +1,15 @@
 <%= render "navbar" %>
 
-<h1>This is all the events.</h1>
+<div>
+  <h1>Past Events</h1>
+  <% Event.past.each do |event| %>
+    <p> <%= link_to event.name, event_path(event) %> </p>
+  <% end %>
+</div>
 
 <div>
-	<% @events.each do | event | %>
-			<p>Name: <%= event.name %> </p>
-			<p>Location: <%= event.location %> </p>
-			<p>Date: <%= event.date %> </p>
-	<% end %>
+  <h1>Upcoming Events</h1>
+  <% Event.upcoming.each do |event| %>
+    <p> <%= link_to event.name, event_path(event) %> </p>
+  <% end %>
 </div>
