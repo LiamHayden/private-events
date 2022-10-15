@@ -1,5 +1,3 @@
-<%= render "/events/navbar" %>
-
 <h1>Created Events</h1>
 <% @user.created_events.each do | event | %>
   <p>Name: <%= link_to event.name, event_path(event) %> </p>
