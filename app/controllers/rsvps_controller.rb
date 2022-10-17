@@ -8,4 +8,11 @@ class RsvpsController < ApplicationController
 			redirect_to @event, notice: "You are now attending the event."
 		end
 	end
+
+  def cancel
+    @event = Event.find(params[:id])
+
+    @event.attendees.delete(current_user)
+    redirect_to @event, notice: "You are no longer attending."
+  end
 end

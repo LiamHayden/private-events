@@ -55,6 +55,13 @@ class EventsController < ApplicationController
 		end
 	end
 
+  def cancel
+    @event = Event.find(params[:id])
+
+    @event.attendees.delete(current_user)
+    redirect_to @event, notice: "You are no longer attending."
+  end
+
 	private
 	def event_params
 		params.require(:event).permit(:name, :location, :date, :creator_id)
