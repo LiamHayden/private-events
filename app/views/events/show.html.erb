@@ -2,7 +2,15 @@
 <p>Location: <%= @event.location %></p>
 <p>Date: <%= @event.date %> </p>
 
-<%= link_to 'RSVP', rsvp_event_path %> 
+<% if @event.creator_id == current_user[:id] %>
+  <%= link_to "Edit Event", edit_event_path(@event) %>
+  <%= link_to "Delete Event", event_path(@event), data: { 
+    turbo_method: :delete, 
+    turbo_confirm: "Are you sure?" 
+    } %>
+<% else %>
+  <%= link_to 'RSVP', rsvp_event_path %>
+<% end %>
 
 <h2>Attendees</h2>
 <% if @event.attendees.empty? %>
