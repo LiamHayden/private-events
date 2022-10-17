@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :events do
     member do
       get 'rsvp'
+      get 'cancel'
     end
   end
 end

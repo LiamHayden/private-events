@@ -8,6 +8,8 @@
     turbo_method: :delete, 
     turbo_confirm: "Are you sure?" 
     } %>
+<% elsif @event.attendees.include?(current_user) %>
+  <%= link_to "Cancel RSVP", cancel_event_path %>
 <% else %>
   <%= link_to 'RSVP', rsvp_event_path %>
 <% end %>
