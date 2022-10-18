@@ -1,25 +1,32 @@
-<div class="container">
-  <h1>Private Events</h1>
-	<ul>
-		<li>
-			<%= link_to "Home", root_path %>
+<div class="container pt-3 pb-5">
+  <h1 class="position-absolute">Private Events</h1>
+	<ul class="nav nav-tabs justify-content-end">
+		<li class="nav-item">
+			<%= link_to "Home", root_path, class: "nav-link active", "data-bs-toggle" => "tab" %>
 		</li>
-		<li>
+		<li class="nav-item">
 			<% if user_signed_in? %>
-        <%= link_to "Profile", user_path(current_user) %>
+        <%= link_to "Profile", user_path(current_user), class: "nav-link", "data-bs-toggle" => "tab" %>
       <% else %>
         Profile
       <% end %>
 		</li>
-		<li>
-			<%= link_to "Create Event", new_event_path %>
+		<li class="nav-item">
+			<%= link_to "Create Event", new_event_path, class: "nav-link", "data-bs-toggle" => "tab" %>
 		</li>
-		<li>
+		<li class="nav-item">
 			<% if user_signed_in? %>
-				<%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+				<%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-link", "data-bs-toggle" => "tab" %>
 			<% else %>
-				<%= link_to "Sign in", "/users/sign_in" %>
+				<%= link_to "Sign in", "/users/sign_in", class: "nav-link", "data-bs-toggle" => "tab" %>
 			<% end %>
 		</li>
 	</ul>
+</div>
+
+<div class="tab-content">
+  <div class="tab-pane container active", id="home"></div>
+  <div class="tab-pane container", id="profilee"></div>
+  <div class="tab-pane container", id="create-event"></div>
+  <div class="tab-pane container", id="sign-in"></div>
 </div>
