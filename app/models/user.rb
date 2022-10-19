@@ -7,4 +7,9 @@ class User < ApplicationRecord
   has_many :created_events, foreign_key: "creator_id", class_name: "Event"
   has_many :rsvps, foreign_key: "attendee_id"
   has_many :attended_events, through: :rsvps
+
+  validates :email, :encrypted_password, :name, presence: true
+  validates :email, uniqueness: true
+  validates :name, length: { maximum: 25 }
+  validates :encrypted_password, length: { minimum: 6 }
 end
