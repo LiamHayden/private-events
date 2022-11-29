@@ -3,6 +3,9 @@
     <div class="shadow p-5 m-5 col">
       <p class="h1 text-center">Past Events</p>
       <div class="">
+        <% if Event.past_event.empty? %>
+          <p>No events.</p>
+        <% end %>
         <% Event.past_event.each do |event| %>
           <div class="mt-3 pt-3 border border-light shadow-sm bg-body rounded">
             <p>Name: <%= link_to event.name, event_path(event) %> </p>
@@ -16,6 +19,9 @@
     <div class="shadow p-5 m-5 col">
       <p class="h1 text-center">Upcoming Events</p>
       <div class="">
+        <% if Event.upcoming_event.empty? %>
+          <p>No events.</p>
+        <% end %>
         <% Event.upcoming_event.each do |event| %>
           <div class="mt-3 pt-3 border border-light shadow-sm bg-body rounded">
             <p>Name: <%= link_to event.name, event_path(event) %> </p>
