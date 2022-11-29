@@ -1,24 +1,48 @@
-<h1>Name: <%= @event.name %> </h1>
-<p>Location: <%= @event.location %></p>
-<p>Date: <%= @event.date %> </p>
+<div class="container text-center">
+  <div class="row">
+    <div class="col shadow p-5 m-5">
+      <h1><%= @event.name %> </h1>
+      <div class="row mt-3 pt-3 border border-light shadow-sm bg-body rounded">
+        <div class="col-sm">
+          <p class="h2">Details</p>
+          <p>Location: <%= @event.location %></p>
+          <p>Date: <%= @event.date %> </p>
+        </div>
 
-<% if @event.creator_id == current_user[:id] %>
-  <%= link_to "Edit Event", edit_event_path(@event) %>
-  <%= link_to "Delete Event", event_path(@event), data: { 
-    turbo_method: :delete, 
-    turbo_confirm: "Are you sure?" 
-    } %>
-<% elsif @event.attendees.include?(current_user) %>
-  <%= link_to "Cancel RSVP", cancel_event_path %>
-<% else %>
-  <%= link_to 'RSVP', rsvp_event_path %>
-<% end %>
+        <div class="col">
+          <p class="h2">Attendees</p>
+          <% if @event.attendees.empty? %>
+            <p>No attendees, yet.</p>
+          <% else %>
+            <% @event.attendees.each do |attendee| %>
+              <p>User: <%= attendee.name %> </p>
+            <% end %>
+          <% end %>
+        </div>
 
-<h2>Attendees</h2>
-<% if @event.attendees.empty? %>
-  <p>No attendees, yet.</p>
-<% else %>
-  <% @event.attendees.each do |attendee| %>
-    <p>User: <%= attendee.name %> </p>
-  <% end %>
-<% end %>
+        <div class="row">
+          <% if @event.creator_id == current_user[:id] %>
+          <div class="col-sm text-end">
+            <%= link_to "Edit Event", edit_event_path(@event), class: "btn btn-outline-primary rounded-pill px-5 m-3" %>
+          </div>
+          <div class="col-sm text-start">
+            <%= link_to "Delete Event", event_path(@event), class: "btn btn-outline-primary rounded-pill px-5 m-3", data: { 
+              turbo_method: :delete, 
+              turbo_confirm: "Are you sure?" 
+              } %>
+          </div>
+            <% elsif @event.attendees.include?(current_user) %>
+            <div class="text-center">
+              <%= link_to "Cancel RSVP", cancel_event_path, class: "btn btn-outline-primary rounded-pill px-5 m-3 w-25" %>
+            </div>
+            <% else %>
+              <div class="text-center">
+                <%= link_to 'RSVP', rsvp_event_path, class: "btn btn-primary text-white rounded-pill px-5 m-3 w-25 " %>
+              </div>
+          </div>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
